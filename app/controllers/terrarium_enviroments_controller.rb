@@ -1,0 +1,2 @@
+class TerrariumEnviromentsController < ApplicationController
+end

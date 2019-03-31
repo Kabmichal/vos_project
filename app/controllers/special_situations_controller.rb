@@ -1,0 +1,2 @@
+class SpecialSituationsController < ApplicationController
+end
