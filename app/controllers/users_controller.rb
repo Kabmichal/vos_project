@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   def show
     @user = User.find(params[:id])
+    @animals = @user.animals.paginate(page: params[:page])
   end
 
   def index

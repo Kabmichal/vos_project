@@ -1,0 +1,9 @@
+<li id="animal-<%= animal.id %>">
+  <%= link_to gravatar_for(animal.user, size: 50), animal.user %>
+   Animal:
+  <span class="name"><%= animal.name %></span>
+  <% if current_user?(animal.user) %>
+    <%= link_to "delete", animal, method: :delete,
+                data: { confirm: "You sure?" } %>
+  <% end %>
+</li>
