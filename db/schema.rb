@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_210850) do
+ActiveRecord::Schema.define(version: 2019_04_13_100536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,6 @@ ActiveRecord::Schema.define(version: 2019_03_30_210850) do
     t.integer "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "foods_id"
-    t.bigint "animals_id"
-    t.index ["animals_id"], name: "index_animal_foods_on_animals_id"
-    t.index ["foods_id"], name: "index_animal_foods_on_foods_id"
   end
 
   create_table "animal_types", force: :cascade do |t|
@@ -33,14 +29,12 @@ ActiveRecord::Schema.define(version: 2019_03_30_210850) do
   end
 
   create_table "animals", force: :cascade do |t|
-    t.integer "type_id"
     t.string "name"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.bigint "animal_types_id"
-    t.index ["animal_types_id"], name: "index_animals_on_animal_types_id"
-    t.index ["users_id"], name: "index_animals_on_users_id"
+    t.index ["user_id", "created_at"], name: "index_animals_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_animals_on_user_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -54,8 +48,6 @@ ActiveRecord::Schema.define(version: 2019_03_30_210850) do
     t.string "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "animals_id"
-    t.index ["animals_id"], name: "index_special_situations_on_animals_id"
   end
 
   create_table "terraria", force: :cascade do |t|
@@ -69,10 +61,6 @@ ActiveRecord::Schema.define(version: 2019_03_30_210850) do
     t.integer "terrarium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "terraria_id"
-    t.bigint "animals_id"
-    t.index ["animals_id"], name: "index_terrarium_enviroments_on_animals_id"
-    t.index ["terraria_id"], name: "index_terrarium_enviroments_on_terraria_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -81,14 +69,10 @@ ActiveRecord::Schema.define(version: 2019_03_30_210850) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "remember_digest"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "animal_foods", "animals", column: "animals_id"
-  add_foreign_key "animal_foods", "foods", column: "foods_id"
-  add_foreign_key "animals", "animal_types", column: "animal_types_id"
-  add_foreign_key "animals", "users", column: "users_id"
-  add_foreign_key "special_situations", "animals", column: "animals_id"
-  add_foreign_key "terrarium_enviroments", "animals", column: "animals_id"
-  add_foreign_key "terrarium_enviroments", "terraria", column: "terraria_id"
+  add_foreign_key "animals", "users"
 end

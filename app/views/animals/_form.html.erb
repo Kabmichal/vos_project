@@ -1,8 +1,8 @@
-<%= form_for(@animals) do |f| %>
-  <%= render 'shared/error_messages', object: @animals %>
+<%= form_for(@animal) do |f| %>
+  <%= render 'shared/error_messages', object: @animal %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.submit "Create animal", class: "btn btn-primary" %>
+  <%= f.submit "Sign up", class: "btn btn-primary" %>
 <% end %>
