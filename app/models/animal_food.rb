@@ -1,5 +1,7 @@
 class AnimalFood < ApplicationRecord
-  default_scope -> { order(created_at: :desc)}
-  belongs_to :food
   belongs_to :animal
+  default_scope -> {order(created_at: :desc)}
+  validates :animal_id, presence: true
+  validates :count, presence: true
+  validates :time, presence: true
 end

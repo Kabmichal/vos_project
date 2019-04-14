@@ -1,0 +1,11 @@
+<li id="animal_food-<%= animal_food.id %>">
+  <span class="time"><%= animal_food.time %></span>
+  <span class="count">Number of pieces: <%= animal_food.count %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(animal_food.created_at) %> ago.
+    <% if current_user?(animal_food.animal.user) %>
+      <%= link_to "delete", animal_food, method: :delete,
+                  data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

@@ -9,6 +9,12 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
   end
 
+  def current_animal
+    if (animal = session[:animal_id])
+      @current_animal ||= Animal.find_by(id: animal)
+    end
+  end
+
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
