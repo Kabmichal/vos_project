@@ -22,12 +22,12 @@ end
 
 users = User.order(:created_at).take(6)
 100.times do
-  name = Faker::Lorem.sentence(5)
+  name = Faker::Name.name
   users.each { |user| user.animals.create!(name: name) }
 end
 
 animals= Animal.order(:created_at).take(100)
 10.times do
-  count = rand
+  count = rand * (100-1) + 1
   animals.each { |animal| animal.animal_foods.create!(count: count,time: Time.zone.now)}
 end
