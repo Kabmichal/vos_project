@@ -5,3 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create!(name:  "Exampleew User",
+             email: "exampleee@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar")
+
+1000000.times do |n|
+  name  = Faker::Name.name
+  email = "example2-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end
+
+users = User.order(:created_at).take(6)
+100.times do
+  name = Faker::Lorem.sentence(5)
+  users.each { |user| user.animals.create!(name: name) }
+end
+
+animals= Animal.order(:created_at).take(100)
+10.times do
+  count = rand
+  animals.each { |animal| animal.animal_foods.create!(count: count,time: Time.zone.now)}
+end
