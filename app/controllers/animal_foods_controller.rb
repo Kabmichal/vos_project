@@ -8,8 +8,8 @@ class AnimalFoodsController < ApplicationController
       flash[:success] = "Note created!"
       redirect_to request.referer
     else
-      flash[:danger] = "Something is wrong"
-      redirect_to :back
+      flash[:danger] = "Count cant be nill"
+      redirect_to root_path
     end
   end
 

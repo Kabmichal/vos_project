@@ -5,7 +5,15 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
+      </h1>`
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.animals.any? %>
+      <ol>
+        <%= render @animals %>
+      </ol>
+      <%= will_paginate @animals %>
+    <% end %>
+  </div>
 </div>

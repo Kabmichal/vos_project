@@ -1,0 +1,8 @@
+<li id="animal_food-<%= food.id %>">
+  <span class="time"><%= food.name %></span>
+  <span class="time"><%= food.calories %></span>
+
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(food.created_at) %> ago.
+  </span>
+</li>

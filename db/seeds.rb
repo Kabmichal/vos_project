@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+=begin
 User.create!(name:  "Exampleew User",
              email: "exampleee@railstutorial.org",
              password:              "foobar",
@@ -19,9 +20,10 @@ User.create!(name:  "Exampleew User",
                password:              password,
                password_confirmation: password)
 end
+=end
 
-users = User.order(:created_at).take(6)
-100.times do
+users = User.order(:created_at).take(100)
+5.times do
   name = Faker::Name.name
   users.each { |user| user.animals.create!(name: name) }
 end

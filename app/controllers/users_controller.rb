@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @animals = @user.animals.paginate(page: params[:page])
+    @foods = @user.foods.paginate(page: params[:page])
   end
 
   def index

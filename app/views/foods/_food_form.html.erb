@@ -1,0 +1,9 @@
+<%= form_for(@food) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.label :calories %>
+  <%= f.text_field :calories, class: 'form-control' %>
+
+
+  <%= f.submit "Create food", class: "btn btn-primary" %>
+<% end %>
