@@ -4,7 +4,7 @@
   <aside class="col-md-4">
 
     <section class="user_info">
-      <%= render 'users/user_info' %>
+      <%= render 'users/all_users' %>
     </section>
     <section class="animal_foods">
       <%= render 'animals/animal_food_form' %>
@@ -12,7 +12,7 @@
   </aside>
   <div class="col-md-8">
     <% if @animal.animal_foods.any? %>
-      <h3>Animal was feed <%= AnimalFood.count_by_sql("SELECT COUNT(*) FROM animal_foods WHERE animal_id = '#{@animal.id}'") %> times</h3>
+      <h3>Animal was feed <%= @animal.animal_foods.count %> times</h3>
       <ol class="zviera">
         <%= render @animal_foods %>
       </ol>

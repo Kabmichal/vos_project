@@ -1,6 +1,11 @@
 <li id="animal_food-<%= animal_food.id %>">
   <span class="time"><%= animal_food.time %></span>
   <span class="count">Number of pieces: <%= animal_food.count %></span>
+  <span class="count">type of food: <%= Food.where(id: animal_food.food_id).first.name %></span>
+  <span class="count">, number of calories: <%=animal_food.count * Food.where(id: animal_food.food_id).first.calories %></span>
+
+
+
   <span class="timestamp">
     Posted <%= time_ago_in_words(animal_food.created_at) %> ago.
     <% if current_user?(animal_food.animal.user) %>

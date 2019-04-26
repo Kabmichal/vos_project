@@ -1,0 +1,6 @@
+<li>
+  <%= link_to gravatar_for(actual_user, size: 50), actual_user %>
+  <h1><%= link_to (actual_user.name),actual_user %></h1>
+  <span><%= pluralize(actual_user.animals.count, "animal") %></span>
+
+</li>

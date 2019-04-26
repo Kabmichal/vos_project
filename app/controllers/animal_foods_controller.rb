@@ -25,6 +25,6 @@ class AnimalFoodsController < ApplicationController
     redirect_to root_url if @animal_food.nil?
   end
   def animal_food_params
-    params.require(:animal_food).permit(:count, :time)
+    params.require(:animal_food).permit(:count, :time, :food_id)
   end
 end

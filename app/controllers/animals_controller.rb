@@ -1,13 +1,9 @@
 class AnimalsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :show]
-  before_action :correct_user, only: [:destroy,:show]
+  before_action :correct_user, only: [:destroy]
 
   def show
-    index = params[:id]
-    @animal = Animal.find_by_sql(
-        "SELECT *
-        FROM animals a
-        WHERE a.id = '#{index}'").first
+    @animal = Animal.find(params[:id])
     session[:animal_id]= @animal.id
     @animal_foods = @animal.animal_foods.paginate(page: params[:page])
     @animal_food = current_animal.animal_foods.build

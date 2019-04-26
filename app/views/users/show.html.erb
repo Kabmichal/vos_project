@@ -10,7 +10,7 @@
   </aside>
   <div class="col-md-8">
     <% if @user.animals.any? %>
-      <ol>
+      <ol class="animal">
         <%= render @animals %>
       </ol>
       <%= will_paginate @animals %>

@@ -14,7 +14,9 @@ module SessionsHelper
       @current_animal ||= Animal.find_by(id: animal)
     end
   end
-
+  def actual_user
+    actual_user||= User.find_by(id: current_animal.user.id)
+  end
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)

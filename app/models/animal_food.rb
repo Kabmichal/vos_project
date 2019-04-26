@@ -4,4 +4,5 @@ class AnimalFood < ApplicationRecord
   validates :animal_id, presence: true
   validates :count, presence: true
   validates :time, presence: true
+  validates :food_id, presence: true
 end
