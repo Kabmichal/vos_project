@@ -21,7 +21,20 @@ User.create!(name:  "Exampleew User",
                password_confirmation: password)
 end
 =end
+animal_types_list=[
+    'Turtle',
+    'Tortoise',
+    'Water dragon',
+    'Leopard gecko',
+    'Bearded dragon',
+    'Snake',
+    'Anole'
+]
 
+animal_types_list.each do |animal_type|
+  AnimalType.create( animal_type: animal_type)
+end
+=begin
 users = User.order(:created_at).take(100)
 5.times do
   name = Faker::Name.name
@@ -33,3 +46,4 @@ animals= Animal.order(:created_at).take(100)
   count = rand * (100-1) + 1
   animals.each { |animal| animal.animal_foods.create!(count: count,time: Time.zone.now)}
 end
+=end

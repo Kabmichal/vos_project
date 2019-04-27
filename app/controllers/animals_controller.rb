@@ -26,7 +26,7 @@ class AnimalsController < ApplicationController
  private
 
   def animal_params
-    params.require(:animal).permit(:name)
+    params.require(:animal).permit(:name, :animal_type_id)
   end
   def correct_user
     @animal = current_user.animals.find_by(id: params[:id])

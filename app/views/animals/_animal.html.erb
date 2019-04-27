@@ -1,11 +1,16 @@
 <li id="animal"<%= animal.id %>">
     <%= link_to gravatar_for(animal.user, size: 50), animal %>
-          <span class="user"> Animal: <%= animal.name %></span>
+    <span>Animal name:</span>
+<strong>
+    <%= link_to animal.name, animal %>
+</strong>
+
     <% if current_user?(animal.user) %>
       <%= link_to "delete", animal, method: :delete,
                   data: { confirm: "You sure?" } %>
-      <%= link_to "select", animal%>
 
-        </div>
 <% end %>
+<div>
+<span class="count">Animal type: <%= AnimalType.where(id: animal.animal_type_id).first.animal_type %></span>
+</div>
 </li>

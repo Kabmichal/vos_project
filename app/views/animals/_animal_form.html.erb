@@ -1,6 +1,9 @@
 <%= form_for(@animal) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>
+  <%= f.label :animal_type %>
+  <%= f.collection_select :animal_type_id, AnimalType.order(:animal_type),:id,:animal_type, include_blank: false %>
+
 
   <%= f.submit "Create animal", class: "btn btn-primary" %>
 <% end %>
