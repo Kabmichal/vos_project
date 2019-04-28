@@ -8,5 +8,9 @@ class Animal < ApplicationRecord
   has_many :special_situations
   has_many :terrarium_enviroments
   has_many :animal_foods
+
+  def self.search(search)
+    where("name LIKE ?","%#{search}%")
+  end
 end
 

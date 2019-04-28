@@ -1,0 +1,15 @@
+<%= form_tag animals_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search"%>
+  </p>
+<% end %>
+
+
+<ul class="users">
+  <% if @animals.nil? %>
+    <h2> No animals was find </h2>
+  <% else %>
+  <%= render @animals %>
+  <%end%>
+</ul>
