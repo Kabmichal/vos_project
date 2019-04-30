@@ -2,17 +2,18 @@
 <h1><%= @animal.name %></h1>
 <div class="row">
   <aside class="col-md-4">
-
     <section class="user_info">
       <%= render 'users/all_users' %>
     </section>
-    <section class="animal_foods">
+    <% if @current_user == actual_user %>
+  <section class="animal_foods">
       <%= render 'animals/animal_food_form' %>
     </section>
+    <% end %>
   </aside>
   <div class="col-md-8">
     <% if @animal.animal_foods.any? %>
-      <h3>Animal was feed <%= @animal.animal_foods.count %> times</h3>
+      <h3>Animal was feed <%= @count %> times today</h3>
       <ol class="zviera">
         <%= render @animal_foods %>
       </ol>
