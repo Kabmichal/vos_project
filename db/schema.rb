@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_30_072517) do
+ActiveRecord::Schema.define(version: 2019_04_30_211212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,28 +53,32 @@ ActiveRecord::Schema.define(version: 2019_04_30_072517) do
     t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
+  create_table "home_enviroments", force: :cascade do |t|
+    t.float "temperature"
+    t.float "humidity"
+    t.date "date"
+    t.time "time"
+    t.bigint "home_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["home_id", "created_at"], name: "index_home_enviroments_on_home_id_and_created_at"
+    t.index ["home_id"], name: "index_home_enviroments_on_home_id"
+  end
+
+  create_table "homes", force: :cascade do |t|
+    t.string "name"
+    t.integer "size"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_homes_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_homes_on_user_id"
+  end
+
   create_table "special_situations", force: :cascade do |t|
     t.string "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "terraria", force: :cascade do |t|
-    t.float "temperature"
-    t.float "humidity"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "created_at"], name: "index_terraria_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_terraria_on_user_id"
-  end
-
-  create_table "terrarium_enviroments", force: :cascade do |t|
-    t.bigint "terraria_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["terraria_id", "created_at"], name: "index_terrarium_enviroments_on_terraria_id_and_created_at"
-    t.index ["terraria_id"], name: "index_terrarium_enviroments_on_terraria_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,6 +95,6 @@ ActiveRecord::Schema.define(version: 2019_04_30_072517) do
   add_foreign_key "animal_foods", "animals"
   add_foreign_key "animals", "users"
   add_foreign_key "foods", "users"
-  add_foreign_key "terraria", "users"
-  add_foreign_key "terrarium_enviroments", "terraria", column: "terraria_id"
+  add_foreign_key "home_enviroments", "homes"
+  add_foreign_key "homes", "users"
 end

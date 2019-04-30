@@ -1,0 +1,9 @@
+<%= form_for(@home) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.label :size %>
+  <%= f.text_field :size, class: 'form-control' %>
+
+
+  <%= f.submit "Create Terrarium", class: "btn btn-primary" %>
+<% end %>
