@@ -1,0 +1,11 @@
+<li id="home"<%= home.id %>">
+<%= link_to gravatar_for(home.user, size: 50), home %>
+<span>Home name:</span>
+<strong>
+  <%= link_to home.name, home %>
+</strong>
+  <div>
+  <span>Size:</span>
+  <%= home.size %>
+  </div>
+</li>

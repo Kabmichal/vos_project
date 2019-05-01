@@ -1,0 +1,6 @@
+<% if @homes_items.any? %>
+  <ol class="animals">
+    <%= render @homes_items %>
+  </ol>
+  <%= will_paginate @homes_items %>
+<% end %>

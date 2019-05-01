@@ -3,15 +3,20 @@ class HomesController < ApplicationController
 
   def home
     @home = current_user.homes.build if logged_in?
+    @homes_items = current_user.homes.paginate(page: params[:page])
+  end
+  def index
+    @homes= Home.all.order('created_at DESC').paginate(page: params[:page])
   end
   def show
-
+    @home = current_user.homes.build if logged_in?
+    @homes = current_user.homes.paginate(page: params[:page])
   end
   def create
     @home = current_user.homes.build(home_params)
     if @home.save
       flash[:success] = 'Terrarium created'
-      redirect_to root_url
+      redirect_to homes_path
     else
       flash.now[:error] = "Could not create terrarium"
     end
