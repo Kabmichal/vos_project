@@ -14,6 +14,11 @@ module SessionsHelper
       @current_animal ||= Animal.find_by(id: animal)
     end
   end
+  def current_home
+    if (home = session[:home_id])
+      @current_home ||= Home.find_by(id: home)
+    end
+  end
   def actual_user
     actual_user||= User.find_by(id: current_animal.user.id)
   end

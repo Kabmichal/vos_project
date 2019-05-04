@@ -12,6 +12,8 @@ gem 'bcrypt',         '3.1.12'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'faker'
+gem "chartkick"
+gem 'groupdate'
 gem 'will_paginate', '~> 3.1',  '>=3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 

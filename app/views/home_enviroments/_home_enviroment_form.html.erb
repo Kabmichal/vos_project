@@ -1,0 +1,9 @@
+<%= form_for(@home_enviroment) do |f| %>
+  <%= f.label :humidity %>
+  <%= f.text_field :humidity, class: 'form-control' %>
+  <%= f.label :temperature%>
+  <%= f.text_field :temperature, class: 'form-control' %>
+
+
+  <%= f.submit "Create note", class: "btn btn-primary" %>
+<% end %>

@@ -11,6 +11,9 @@ class HomesController < ApplicationController
   def show
     @home = current_user.homes.build if logged_in?
     @homes = current_user.homes.paginate(page: params[:page])
+    @home = Home.find(params[:id])
+    session[:home_id]= @home.id
+    @home_enviroment = current_home.home_enviroments.build
   end
   def create
     @home = current_user.homes.build(home_params)

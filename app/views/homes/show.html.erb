@@ -1,12 +1,9 @@
 <% provide(:title, @home.name) %>
 <div class="row">
   <aside class="col-md-4">
+    <%= render 'homes/home_enviroment_form' %>
   </aside>
   <div class="col-md-8">
-      <h2><%= @home.name %> terrarias</h2>
-      <ol class="animal">
-        <%= render @homes %>
-      </ol>
-      <%= will_paginate @homes %>
+
   </div>
 </div>

@@ -18,6 +18,12 @@
         <%= render @animal_foods %>
       </ol>
       <%= will_paginate @animal_foods %>
-    <% end %>
+      <%= line_chart @current_animal.animal_foods.pluck(:current_date, @caloriesSql4.rows), format: "%B %d %Y %H %M",library: {backgroundColor: "#eee"}, xtitle: "Time", ytitle: "Animal count" %>
+      <h3>animal get <%= @caloriesSql4.rows %>calories today</h3>
+      <%= line_chart [
+                         {name: "calories", data: @caloriesSql4.rows, xtitle: "Date",ytitle: "Calories"}
+                     ] %>
+
+  <% end %>
   </div>
 </div>

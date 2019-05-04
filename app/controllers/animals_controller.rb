@@ -33,17 +33,33 @@ class AnimalsController < ApplicationController
     end
   end
   def show
+    @users = User.all
+    @current_user = current_user
+    calories = Food.joins(:user).where('foods.user_id = current_user.id')
     @animal = Animal.find(params[:id])
     session[:animal_id]= @animal.id
-    @animal_foods = @animal.animal_foods.paginate(page: params[:page]).order('current_date DESC')
+    @animal_foods = @animal.animal_foods.paginate(page: params[:page]).order('animal_foods.current_date DESC')
     @animal_food = current_animal.animal_foods.build
     @current_animal_food = current_animal.animal_foods
     #@count = @current_animal_food.count_by_sql("SELECT *
      #                            FROM animal_foods f
       #                           WHERE f.animal_id = #{@animal.id}
-       #                          GROUP BY f.current_date
-        #                         ORDER BY f.current_date DESC")
-    @count = @current_animal_food.where('current_date BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).count
+       #                          OR f.current_date = #{Date.today}
+        #                         GROUP BY f.id,f.current_date
+         #                        ORDER BY f.current_date DESC")
+    @caloriesSql = ActiveRecord::Base.connection.exec_query("SELECT SUM(f.calories) * COUNT(f.id) as amount_of_calories FROM animal_foods af
+      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id}
+      GROUP BY f.id")
+    @caloriesSql4 = ActiveRecord::Base.connection.exec_query("SELECT SUM(f.calories * af.count) FROM animal_foods af
+      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id} GROUP BY  af.current_date")
+    @caloriesSql=@caloriesSql.rows
+    @caloriesSql3 = 3
+    @caloriesSql2 = "SELECT SUM(f.calories * COUNT(f.id)) as amount_of_calories FROM animal_foods af
+      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id}
+      GROUP BY af.current_date"
+    @count = @current_animal_food.where('animal_foods.current_date = ?', Date.today).count
+
+      #@count = @current_animal_food.where('current_date BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).count
   end
   def create
     @animal = current_user.animals.build(animal_params)

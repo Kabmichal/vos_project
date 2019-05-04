@@ -1,0 +1,11 @@
+<%= form_for(@home_enviroment) do |f| %>
+  <%= f.label :humidity %>
+  <%= f.text_field :humidity, class: 'form-control' %>
+  <%= f.label :temperature%>
+  <%= f.number_field :temperature, :step => "0.1", class: 'form-control'%>
+  <%= f.label :time %> <%= f.time_select(:time) %>
+  <%= f.label :date %> <%= f.date_select(:date, :order => [:month, :day, :year]) %>
+
+
+  <%= f.submit "Create note", class: "btn btn-primary" %>
+<% end %>
