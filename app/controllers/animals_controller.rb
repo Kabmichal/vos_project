@@ -51,15 +51,16 @@ class AnimalsController < ApplicationController
       JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id}
       GROUP BY f.id")
     @caloriesSql4 = ActiveRecord::Base.connection.exec_query("SELECT SUM(f.calories * af.count) FROM animal_foods af
-      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id} GROUP BY  af.current_date")
+      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id} GROUP BY  af.current_date ORDER BY af.current_date")
     @caloriesSql=@caloriesSql.rows
-    @caloriesSql3 = 3
+    @caloriesSql3 = ActiveRecord::Base.connection.exec_query("SELECT SUM(f.calories * af.count) FROM animal_foods af
+      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id} AND af.current_date = current_date GROUP BY  af.current_date")
+
     @caloriesSql2 = "SELECT SUM(f.calories * COUNT(f.id)) as amount_of_calories FROM animal_foods af
       JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id}
       GROUP BY af.current_date"
     @count = @current_animal_food.where('animal_foods.current_date = ?', Date.today).count
-
-      #@count = @current_animal_food.where('current_date BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).count
+    #@count = @current_animal_food.where('current_date BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).count
   end
   def create
     @animal = current_user.animals.build(animal_params)

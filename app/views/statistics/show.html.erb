@@ -1,0 +1,14 @@
+Totaly was spend <%= @days %> pieces of food today
+<%= line_chart (@days) %>
+<h3>Statistic of other users</h3>
+<% @animal_calories.each do |animal|%>
+  <div>
+    <td class="text-center col-md-2">Animal type: <%= animal["animal_type"]%>, Avarage number of calories <%=animal["round"]%>/per day</td>
+  </div>
+<% end %>
+<h3>Your animal statistics</h3>
+<% @my_animal_calories.each do |animal|%>
+  <div>
+  <td class="text-center col-md-2">Animal type: <%= animal["animal_type"]%>, Avarage number of calories <%=animal["round"]%>/per day</td>
+  </div>
+<% end %>

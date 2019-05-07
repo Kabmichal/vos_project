@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get '/select', to: 'animals#select'
   get '/homes', to: 'homes#home'
-
+  get '/statistics', to: 'statistics#show'
 
 
 
