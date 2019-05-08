@@ -1,0 +1,8 @@
+<%= form_tag url: "animal_foods_path" do %>
+
+    Name: <%= text_field_tag :name %><br />
+    Calories : <%= number_field_tag :calories %><br />
+    Count : <%= number_field_tag :count %><br />
+
+  <%= submit_tag "Post", class: "btn btn-primary" %>
+<% end %>

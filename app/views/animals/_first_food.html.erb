@@ -1,0 +1,12 @@
+<%= form_for  url: "animal_foods_path" do |f| %>
+  <div class="field">  <%= f.label :name %>
+
+    Name: <%= f.text_field :name %><br />
+    Calories : <%= f.number_field :calories %><br />
+    Count : <%= f.number_field :count %><br />
+    Time    : <%= f.time_select :time %><br />
+    Date <%= f.date_select(:current_date, :order => [:month, :day, :year]) %><br />
+
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

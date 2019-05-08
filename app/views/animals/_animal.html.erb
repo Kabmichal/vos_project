@@ -8,9 +8,11 @@
     <% if current_user?(animal.user) %>
       <%= link_to "delete", animal, method: :delete,
                   data: { confirm: "You sure?" } %>
-
 <% end %>
 <div>
 <span class="count">Animal type: <%= AnimalType.where(id: animal.animal_type_id).first.animal_type %></span>
+</div>
+<div>
+<span class="count">Number of notes: <%= AnimalFood.where(animal_id: animal.id).count %></span>
 </div>
 </li>

@@ -5,29 +5,8 @@ class AnimalsController < ApplicationController
 
   def index
     if params[:search]
-      #@animals=Animal.joins(:animal_type).where('animal_type.name like ?', "%#{params[:name]}%")
-
-     # @animals = Animal.search(params[:@animal_type.name]).order("created_at DESC")
-      #
       @animals= Animal.joins(:animal_type).where("animals.name like ? or animal_types.animal_type like ?", "%#{params[:search]}%","%#{params[:search]}%").paginate(page: params[:page])
 
-      #@results=Animal.joins(:animal_type)
-      #@animals=Animal.joins(:animal_type).where('animal_types.animal_type like ?', "%#{params[:search]}%")
-      #@animals = @results.search(params[:search]).order("created_at DESC")
-
-
-      #animal_sql = "SELECT animal_types.id, animal_types.name, name FROM animals
-	#	JOIN animal_types t ON t.id = animal_type_id"
-                #       .where('t.name like ?', "%#{params[:search]}%")
-     # @animals = Animal.search(params[:search]).order("created_at DESC")
-
-   #   @animals = Animal.joins(:animal_type)
-    #                 .where("animal_types.name OR amimals.name like ?", "%#{params[:search]}%")
-
-
-
-      #@animals = Animal.search(params[:search]).order("created_at DESC")
-     #@animals= Animal.all.order('created_at DESC')
     else
       @animals= Animal.all.order('created_at DESC').paginate(page: params[:page])
     end
@@ -35,18 +14,20 @@ class AnimalsController < ApplicationController
   def show
     @users = User.all
     @current_user = current_user
-    calories = Food.joins(:user).where('foods.user_id = current_user.id')
     @animal = Animal.find(params[:id])
     session[:animal_id]= @animal.id
     @animal_foods = @animal.animal_foods.paginate(page: params[:page]).order('animal_foods.current_date DESC')
-    @animal_food = current_animal.animal_foods.build
+    @food_count = Food.count_by_sql("SELECT COUNT(*) FROM foods f WHERE f.user_id = #{@current_user.id}")
+    if @food_count == 0
+      @food_count = nil
+    end
+    if @food_count.nil?
+    else
+      @animal_food = current_animal.animal_foods.build
+      #redirect_to :controller => "animal_foods", action: "create"
+    end
+
     @current_animal_food = current_animal.animal_foods
-    #@count = @current_animal_food.count_by_sql("SELECT *
-     #                            FROM animal_foods f
-      #                           WHERE f.animal_id = #{@animal.id}
-       #                          OR f.current_date = #{Date.today}
-        #                         GROUP BY f.id,f.current_date
-         #                        ORDER BY f.current_date DESC")
     @caloriesSql = ActiveRecord::Base.connection.exec_query("SELECT SUM(f.calories) * COUNT(f.id) as amount_of_calories FROM animal_foods af
       JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id}
       GROUP BY f.id")
@@ -73,7 +54,12 @@ class AnimalsController < ApplicationController
     end
   end
   def destroy
-    @animal.destroy
+    ActiveRecord::Base.connection.execute(
+        "BEGIN;
+        DELETE FROM animal_foods WHERE animal_foods.animal_id = '#{current_animal.id}';
+        DELETE FROM animals WHERE animals.id = '#{current_animal.id}';
+      COMMIT;"
+    )
     flash[:success] = "Animal was deleted"
     redirect_to request.referrer || root_url
   end
