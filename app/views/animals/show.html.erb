@@ -8,7 +8,6 @@
     <% if @current_user == actual_user %>
   <section class="animal_foods">
     <% if @food_count.nil? %>
-      <%= render 'animal_foods/first_food_form' %>
   <%else %>
       <%= render 'animals/animal_food_form' %>
       <%end %>

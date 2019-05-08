@@ -24,7 +24,6 @@ class AnimalsController < ApplicationController
     if @food_count.nil?
     else
       @animal_food = current_animal.animal_foods.build
-      #redirect_to :controller => "animal_foods", action: "create"
     end
 
     @current_animal_food = current_animal.animal_foods
@@ -41,7 +40,6 @@ class AnimalsController < ApplicationController
       JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id}
       GROUP BY af.current_date"
     @count = @current_animal_food.where('animal_foods.current_date = ?', Date.today).count
-    #@count = @current_animal_food.where('current_date BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).count
   end
   def create
     @animal = current_user.animals.build(animal_params)
@@ -54,12 +52,22 @@ class AnimalsController < ApplicationController
     end
   end
   def destroy
-    ActiveRecord::Base.connection.execute(
+    notes_count = Food.count_by_sql("SELECT COUNT(*) FROM animal_foods f WHERE f.animal_id = #{@animal.id}")
+
+    if notes_count != 0
+      ActiveRecord::Base.connection.execute(
         "BEGIN;
-        DELETE FROM animal_foods WHERE animal_foods.animal_id = '#{current_animal.id}';
-        DELETE FROM animals WHERE animals.id = '#{current_animal.id}';
+        DELETE FROM animal_foods WHERE animal_foods.animal_id = '#{@animal.id}';
+        DELETE FROM animals WHERE animals.id = '#{@animal.id}';
       COMMIT;"
     )
+    else
+      ActiveRecord::Base.connection.execute(
+          "BEGIN;
+        DELETE FROM animals WHERE animals.id = '#{@animal.id}';
+      COMMIT;"
+      )
+    end
     flash[:success] = "Animal was deleted"
     redirect_to request.referrer || root_url
   end

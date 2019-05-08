@@ -7,21 +7,6 @@ class AnimalFoodsController < ApplicationController
     @food_name= @animal_food_n.where(id: animal_food.food_id).first.name
   end
   def create
-    food_count = Food.count_by_sql("SELECT COUNT(*) FROM foods f WHERE f.user_id = #{@current_user.id}")
-    name =params[:name]
-    calories =params[:calories]
-    count =params[:count]
-    if food_count.nil?
-      @daily_record = @daily_record.new
-      @food = current_user.foods.build(food_params)
-      @animal_food = current_animal.animal_foods.build(animal_food_params2)
-      ActiveRecord::Base.transaction do
-        @food.save
-        @animal_food.save
-      end
-      redirect_to animal_path
-      flash[:success] = "Food and record was created!"
-    else
       @animal_food = current_animal.animal_foods.build(animal_food_params)
       if @animal_food.save
         flash[:success] = "Note created!"
@@ -30,7 +15,6 @@ class AnimalFoodsController < ApplicationController
         flash[:danger] = "Count cant be nill"
         redirect_to root_path
       end
-    end
   end
 
   def destroy
@@ -46,14 +30,5 @@ class AnimalFoodsController < ApplicationController
   end
   def animal_food_params
     params.require(:animal_food).permit(:count, :current_date, :time, :food_id)
-  end
-  def animal_food_params2
-    params.require(:animal_food).permit(:count, :current_date, :time, @food.id)
-  end
-  def food_params
-    params.require(:food).permit(:name, :calories)
-  end
-  def record_params
-    params.permit(:name, :calories, :count, :current_date, :time)
   end
 end

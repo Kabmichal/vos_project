@@ -9,6 +9,8 @@ Totaly was spend <%= @days %> pieces of food today
 <h3>Your animal statistics</h3>
 <% @my_animal_calories.each do |animal|%>
   <div>
-  <td class="text-center col-md-2">Animal type: <%= animal["animal_type"]%>, Avarage number of calories <%=animal["round"]%>/per day</td>
+    <tr>
+  <td class="text-center col-md-2"> Animal type: <%= animal["animal_type"]%>, Avarage number of calories <%=animal["round"]%>/per day</td>
+ </tr>
   </div>
 <% end %>
