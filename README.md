@@ -1,4 +1,4 @@
-#DBS 2019
+# DBS 2019
 **Zadanie:**
 Vo vami zvolenom prostredí vytvorte databázovú aplikáciu, ktorá komplexne rieši päť vami zadefinovaných scenárov (prípadov použitia) vo vami zvolenej doméne tak, aby ste demonštrovali využitie relačnej databázy podľa pokynov uvedených nižšie. Presný rozsah a konkretizáciu scenárov si dohodnete s Vašim cvičiacim na cvičení. Projekt sa rieši vo dvojiciach, pričom sa očakáva, že na synchronizáciu práce so spolužiakom / spolužiačkou použijete git. 
 
@@ -46,6 +46,13 @@ príkazov použil jazyk SQL a Ruby.
 ale transakcia, ktorú som napísal ja a využíva prácu s viacerými tabuľkami sa nachádza v
 animals_controller.rb. Rieši vymazanie z dvoch tabuliek(animals, animal_foods). Najprv sa 
 vymažú všetky záznami a potom sa vymaže aj živočích.
+
+Príkazy, ktoré som zadal na vygenerovanie dát do databázy sa nachádzajú
+[tuto](dbs_generate_data.sql)
+
+Schéma databázy:
+![Screenshot](dbs.png)
+
 Things you may want to cover:
 
 * Ruby version: 2.6.0
