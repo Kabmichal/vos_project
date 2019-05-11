@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
+
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+
   def logged_in_user
     unless logged_in?
       store_location

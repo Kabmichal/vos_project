@@ -5,10 +5,10 @@ class AnimalsController < ApplicationController
 
   def index
     if params[:search]
-      @animals= Animal.joins(:animal_type).where("animals.name like ? or animal_types.animal_type like ?", "%#{params[:search]}%","%#{params[:search]}%").paginate(page: params[:page])
+      @animals= Animal.joins(:animal_type).where("animals.name like ? or animal_types.animal_type like ?", "%#{params[:search]}%","%#{params[:search]}%").paginate(page: params[:page],per_page: 8)
 
     else
-      @animals= Animal.all.order('created_at DESC').paginate(page: params[:page])
+      @animals= Animal.all.order('created_at DESC').paginate(page: params[:page],per_page: 8)
     end
   end
   def show
@@ -60,7 +60,7 @@ class AnimalsController < ApplicationController
         DELETE FROM animal_foods WHERE animal_foods.animal_id = '#{@animal.id}';
         DELETE FROM animals WHERE animals.id = '#{@animal.id}';
       COMMIT;"
-    )
+      )
     else
       ActiveRecord::Base.connection.execute(
           "BEGIN;
