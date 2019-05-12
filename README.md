@@ -203,6 +203,7 @@ Terárium môže mať veľa záznamov o prostredí
 
 Číselník:
 animal types
+
 ---
 
 #### Tabuľka ***animals***: 
@@ -215,6 +216,8 @@ name = meno zvieraťa
 user_id = id usera ktorí vlastní zviera
 
 animal_type_id = typ zvieraťa - odkazuje na tabuľku animal_types
+
+---
 
 #### Tabuľka ***users***:
 slúži na evidenciu používateľov
@@ -232,6 +235,8 @@ remember_digest = zapametanie hesla
 
 admin = hovorí či je daný používateľ admin, admin môže vymazávať ostatných používateľov
 
+---
+
 #### Tabuľka ***foods***:
 slúži na evidenciu potravy pre živočíchy. Potrava sa viaže na usera.
 
@@ -242,6 +247,8 @@ name = názov potravy
 calories = počet kalórii danej potravy
 
 user_id = id používateľa, ktorému potrava patrí
+
+---
 
 #### Tabuľka ***animal_foods***:
 tabuľka na evidenciu záznamov o potrave pre daného živočícha
@@ -258,6 +265,8 @@ food_id = id potravy, ktorá bola zvieraťu podaná
 
 current_date = deň kedy bola zvieraťu potrava podaná
 
+---
+
 #### Tabuľka ***homes***:
 Slúži na evidenciu terárií (táto tabuľka bola vytvorená hlavne kôli požiadavke 7 tabuliek na DBS. Na vos ju podľa všetkého zruším)
 
@@ -268,6 +277,8 @@ name = názov terária
 size = veľkosť terátria
 
 user_id = id používateľa, ktorému terárium patrí
+
+---
 
 #### Tabuľka ***home_enviroments***:
 Slúži na evidenciu teploty a vlhkosti v teráriu (na vos bude asi tiež zrušená)
@@ -284,6 +295,8 @@ time = čas kedy bol záznam vytvorený
 
 home_id = id terária ktorému záznam patrí
 
+---
+
 #### Tabuľka ***animal_types***:
 Slúži ako číselník pre tabuľku animals, druhy zvierat boli vygenerované v seeds.rb
 
@@ -291,6 +304,8 @@ Slúži ako číselník pre tabuľku animals, druhy zvierat boli vygenerované v
 
 animal_type = názov druhu zvieraťa 
   
+---
+
 ### Ostatné informácie: 
  
 
