@@ -15,8 +15,8 @@ počet kalórií všetkých používateľov.
 
 **Stručne opísané cenáre:**
 + **Prvý scenár**: Pridanie záznamu. Tento scenár sa v 
-mojej aplikácií nachádza niekoľko krát. napr. Vytvorenie používateľa,
-vytvorenie potravy, ktorou chce používateľ daného živočícha kŕmiť,
+mojej aplikácií nachádza niekoľko krát. napr. Vytvorenie používateľa,`
+vytvorenie potravy, ktorou chce používateľ daného živočícha kŕmiť,`
 vytvorenie živočícha, vytvorenie záznamu pre živočícha.
 
 + **Druhý scenár**: Zobrazenie záznamu. Tento scenár sa takisto
