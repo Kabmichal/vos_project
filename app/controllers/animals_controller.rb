@@ -39,6 +39,8 @@ class AnimalsController < ApplicationController
     @caloriesSql2 = "SELECT SUM(f.calories * COUNT(f.id)) as amount_of_calories FROM animal_foods af
       JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id}
       GROUP BY af.current_date"
+    @AllCaloriesSql = ActiveRecord::Base.connection.exec_query("SELECT af.current_date, SUM(f.calories * af.count) as csum FROM animal_foods af
+      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id} GROUP BY  af.current_date ORDER BY af.current_date")
     @count = @current_animal_food.where('animal_foods.current_date = ?', Date.today).count
   end
   def create

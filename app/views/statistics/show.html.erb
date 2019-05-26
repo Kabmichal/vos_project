@@ -1,16 +1,44 @@
 Totaly was spend <%= @days %> pieces of food today
-<%= line_chart (@days) %>
-<h3>Statistic of other users</h3>
+<%= high_chart_globals(globals("#00ff0")) %>
+<%= high_chart("all_animal_food_chart", animal_calories)%>
 <% @animal_calories.each do |animal|%>
-  <div>
-    <td class="text-center col-md-2">Animal type: <%= animal["animal_type"]%>, Avarage number of calories <%=animal["round"]%>/per day</td>
-  </div>
+  <%= animal["type"] %>
+  <%=animal["cround"]%>
 <% end %>
-<h3>Your animal statistics</h3>
-<% @my_animal_calories.each do |animal|%>
-  <div>
+
+<% @try.each do |animal|%>
+  <%= animal["type"] %>
+  <%=animal["mrd"]%>
+<% end %>
+
+<h3>new graph</h3>
+<%= high_chart_globals(globals("#25d12f")) %>
+<%= high_chart("my_animal_foods", my_animal_foods)%>
+<%= high_chart_globals(globals("#00ff0")) %>
+<%= high_chart("just_try", just_try)%>
+
+<h3>Statistic of other users</h3>
+<table id="t01">
+  <tr>
+    <th class="center">Animal type</th>
+    <th class="center">Avarage number of calories</th>
+  </tr>
+<% @animal_calories.each do |animal|%>
     <tr>
-  <td class="text-center col-md-2"> Animal type: <%= animal["animal_type"]%>, Avarage number of calories <%=animal["round"]%>/per day</td>
- </tr>
-  </div>
+      <td><%= animal["type"]%></td>
+      <td class="center"><%=animal["cround"]%></td>
+    </tr>
 <% end %>
+</table>
+<table id="t02">
+  <tr>
+    <th class="center">Animal type</th>
+    <th class="center">Avarage number of calories</th>
+  </tr>
+<% @my_animal_calories.each do |animal|%>
+    <tr>
+      <td><%= animal["type"]%></td>
+      <td class="center"><%=animal["output"]%></td>
+    </tr>
+<% end %>
+</table>

@@ -62,10 +62,12 @@
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.10.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="groupdate (v4.1.1, RVM: ruby-2.6.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="hash-deep-merge (v0.1.1, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.6.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="io-like (v0.3.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.8.0, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.3.3, RVM: ruby-2.6.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="lazy_high_charts (v1.5.8, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="listen (v3.1.5, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.2.3, RVM: ruby-2.6.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, RVM: ruby-2.6.0) [gem]" level="application" />

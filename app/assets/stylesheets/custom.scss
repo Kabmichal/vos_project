@@ -46,7 +46,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #175;
+  color: #f6fff1;
 }
 
 p {
@@ -59,7 +59,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #eeeeee;
+  color: #25d12f;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -251,4 +251,27 @@ span.picture {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+/* tables */
+
+table, th, td {
+  border: 1px solid black;
+}
+table#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+table {
+  width: 40%;
+  margin-left: 350px;
+
+}
+
+th {
+  height: 50px;
+}
+#head1 {
+  color:  #25d12f;
+}
+#dropdown{
+  color:  #25d12f;
 }

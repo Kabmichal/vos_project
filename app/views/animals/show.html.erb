@@ -16,16 +16,14 @@
   </aside>
   <div class="col-md-8">
     <% if @animal.animal_foods.any? %>
-      <h3>Animal was feed <%= @count %> times today</h3>
+      <h3>Animal was feed <%= @count %> times, <% @caloriesSql3.each do |animal|%> <%=animal["sum"]%><% end %> calories today</h3>
       <ol class="zviera">
         <%= render @animal_foods %>
       </ol>
       <%= will_paginate @animal_foods %>
-      <%= line_chart @current_animal.animal_foods.pluck(:current_date, @caloriesSql4.rows), format: "%B %d %Y %H %M",library: {backgroundColor: "#eee"}, xtitle: "Time", ytitle: "Animal count" %>
-      <h3>animal has got <% @caloriesSql3.each do |animal|%> <%=animal["sum"]%><% end %> calories today</h3>
-      <%= line_chart [
-                         {name: "calories", data: @caloriesSql4.rows, xtitle: "Date",ytitle: "Calories"}
-                     ] %>
+      <%= high_chart_globals(globals("#008000")) %>
+      <%= high_chart("animal_food_chart", animal_food_chart)%>
+
 
   <% end %>
   </div>
