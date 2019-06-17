@@ -1,0 +1,20 @@
+<h2><%= @date.strftime("%B %Y") %></h2>
+<%= calendar do |date| %>
+  <%= date.day %>
+  <%if @notes_by_day[date] %>
+    <ul>
+      <%= @notes_by_day[date].each do |note| %>
+        <li><%=link_to note.note, note %></li>
+        <%end %>
+    </ul>
+    <%end %>
+<% end %>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="animals_form">
+        <%= render 'notes/note_form' %>
+      </section>
+    </aside>
+  </div>
+<% end %>

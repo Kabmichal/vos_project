@@ -1,0 +1,7 @@
+<%= form_for(@note) do |f| %>
+  <%= f.label :note %>
+  <%= f.text_field :note, class: 'form-control' %>
+  <%= f.label :date, 'Date' %>
+<%= f.text_field :date %>
+  <%= f.submit "Create note", class: "btn btn-primary" %>
+<%end %>

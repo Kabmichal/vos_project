@@ -18,7 +18,13 @@ gem "chartkick"
 gem 'groupdate'
 gem 'will_paginate', '~> 3.1',  '>=3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem "simple_calendar", "~> 2.0"
+source 'https://rails-assets.org' do
+  gem 'rails-assets-fullcalendar'
+  gem 'rails-assets-momentjs'
+end
 
+gem 'ice_cube'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

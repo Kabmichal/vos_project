@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :remember_token
   has_many :animals
+  has_many :notes
   has_many :foods
   has_many :homes
   before_save { self.email = email.downcase }

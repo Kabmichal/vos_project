@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_113718) do
+ActiveRecord::Schema.define(version: 2019_06_17_131828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,24 @@ ActiveRecord::Schema.define(version: 2019_05_09_113718) do
     t.index ["user_id"], name: "index_homes_on_user_id"
   end
 
+  create_table "notes", force: :cascade do |t|
+    t.date "date"
+    t.string "note"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "recurring_events", force: :cascade do |t|
+    t.string "title"
+    t.date "anchor"
+    t.integer "frequency", limit: 2, default: 0
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -91,4 +109,5 @@ ActiveRecord::Schema.define(version: 2019_05_09_113718) do
   add_foreign_key "foods", "users"
   add_foreign_key "home_enviroments", "homes"
   add_foreign_key "homes", "users"
+  add_foreign_key "notes", "users"
 end
