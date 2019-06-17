@@ -6,8 +6,11 @@
       <%= render 'users/all_users' %>
     </section>
     <% if @current_user == actual_user %>
+      <% if @food_count.nil? %>
+        </aside>
+        </div>
+        <h1>Create food!</h1>
   <section class="animal_foods">
-    <% if @food_count.nil? %>
   <%else %>
       <%= render 'animals/animal_food_form' %>
       <%end %>
@@ -16,7 +19,13 @@
   </aside>
   <div class="col-md-8">
     <% if @animal.animal_foods.any? %>
-      <h3>Animal was feed <%= @count %> times, <% @caloriesSql3.each do |animal|%> <%=animal["sum"]%><% end %> calories today</h3>
+      <h3>Animal was feed <%= @count %> times, <% @caloriesSql3.each do |animal|%> <%=@help=animal["sum"]%><% end %><%if @help.nil?%> 0 <%end%> calories today</h3>
+      <% @animal_calories2.each do |animal|%><%@value = animal["cround"].to_i - @help.to_i%><%end %>
+      <%if @value>-1 %>
+      <font color="green">  <h3>Animal should get <%= @value%> calories</h3></font>
+        <%else %>
+        <font color="red">  <h3>Be cerraful, animal has got <%= @value.abs %> more calories, than average</h3></font>
+  <%end %>
       <ol class="zviera">
         <%= render @animal_foods %>
       </ol>

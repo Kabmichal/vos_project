@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
 
 
+
   resources :users
   resources :animals, only: [:create, :destroy, :show]
   resources :animal_foods, only: [:create, :destroy]

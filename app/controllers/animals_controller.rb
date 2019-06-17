@@ -27,12 +27,13 @@ class AnimalsController < ApplicationController
     end
 
     @current_animal_food = current_animal.animal_foods
-    @caloriesSql = ActiveRecord::Base.connection.exec_query("SELECT SUM(f.calories) * COUNT(f.id) as amount_of_calories FROM animal_foods af
-      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id}
-      GROUP BY f.id")
-    @caloriesSql4 = ActiveRecord::Base.connection.exec_query("SELECT SUM(f.calories * af.count) FROM animal_foods af
-      JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id} GROUP BY  af.current_date ORDER BY af.current_date")
-    @caloriesSql=@caloriesSql.rows
+    @animal_calories2 = ActiveRecord::Base.connection.exec_query(
+        "SELECT  at.animal_type as type, floor(AVG(f.calories * af.count)) as cround FROM animal_foods af
+        JOIN foods f on f.id = af.food_id
+        JOIN animals a ON a.id = af.animal_id
+        JOIN animal_types at ON at.id = a.animal_type_id
+        WHERE #{current_animal.animal_type_id} = at.id
+        GROUP BY  at.id")
     @caloriesSql3 = ActiveRecord::Base.connection.exec_query("SELECT SUM(f.calories * af.count) FROM animal_foods af
       JOIN foods f on f.id = af.food_id WHERE af.animal_id = #{current_animal.id} AND af.current_date = current_date GROUP BY  af.current_date")
 

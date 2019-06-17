@@ -8,4 +8,6 @@ $(document).on 'turbolinks:load', ->
   $("#animal_food_current_date").datepicker({ dateFormat: "yy-mm-dd"}).datepicker("setDate", new Date());
   #$('#animal_food_current_date').datepicker
   #  dateFormat: 'yy-mm-dd'
+jQuery ->
+ $('#animal_food_time').timepicker()
 

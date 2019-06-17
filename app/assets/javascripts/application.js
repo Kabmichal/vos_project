@@ -26,4 +26,5 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
 //= require jquery-ui/widgets/datepicker
+//= require jquery.timepicker.js
 
