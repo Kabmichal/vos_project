@@ -11,7 +11,7 @@
   <%if @notes_by_day[date] %>
     <ul>
     <% @notes_by_day[date].each do |note| %>
-        <li><%=link_to note.note, note %></li>
+        <li><%=link_to note.note[0..10], note %></li>
         <%end %>
     </ul>
   <%end %>
