@@ -1,0 +1,9 @@
+<li id="animal"<%= note.id %>">
+<span class="date"><%= note.date.strftime("%e %b %Y")%></span>,
+  <span class="count">Text: <%= note.note %></span>
+    <% if current_user?(current_user) %>
+      <%= link_to "delete", note, method: :delete,
+                  data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

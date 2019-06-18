@@ -1,20 +1,28 @@
-<h2><%= @date.strftime("%B %Y") %></h2>
-<%= calendar do |date| %>
+
+  <div class="col-md-12">
+    <div class="well controls">
+<div id="notes">
+<h2><%= link_to "<", date: @date.prev_month %>
+  <font color="black"><%= @date.strftime("%B %Y") %></font>
+<%= link_to ">", date: @date.next_month %>
+</h2>
+<%= calendar @date do |date| %>
   <%= date.day %>
   <%if @notes_by_day[date] %>
     <ul>
-      <%= @notes_by_day[date].each do |note| %>
+    <% @notes_by_day[date].each do |note| %>
         <li><%=link_to note.note, note %></li>
         <%end %>
     </ul>
-    <%end %>
+  <%end %>
 <% end %>
-<% if logged_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="animals_form">
-        <%= render 'notes/note_form' %>
-      </section>
-    </aside>
-  </div>
-<% end %>
+</div>
+    </div>
+</div>
+</aside>
+<%= %>
+  <span>
+  <% if logged_in? %>
+    <%= render 'notes/note_form' %>
+  <% end %>
+    </span>

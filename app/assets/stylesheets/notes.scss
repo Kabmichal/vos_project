@@ -1,3 +1,37 @@
 // Place all the styles related to the notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#notes .calendar{
+  margin-left: 0px;
+  border-collapse: collapse;
+  width: 100%;
+  td, th {
+    font-family: "Lucida Grande",Arial,Helvetica, sans-serif;
+    font-size: 10px;
+    padding: 6px;
+    border: 1px solid #999;
+  }
+  th {
+    background: #DDD;
+    color: #666;
+    text-align: center;
+    width: 14.285714%;
+  }
+
+  td {
+    background: #fff;
+    color: #777;
+    height: 70px;
+    vertical-align: top;
+    font-size: 16px;
+  }
+
+  .notmonth { color: #ccc; }
+  .today {background-color: #D7F2FF; }
+}
+left_move {
+  left: +150px;
+}
+right_move{
+  margin-right: 30px;
+}

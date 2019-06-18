@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).on 'turbolinks:load', ->
-  $("#animal_food_current_date").datepicker({ dateFormat: "yy-mm-dd"}).datepicker("setDate", new Date());
+  $("#note_date").datepicker({ dateFormat: "yy-mm-dd"}).datepicker("setDate", new Date());
 #$('#animal_food_current_date').datepicker
 #  dateFormat: 'yy-mm-dd'
 jQuery ->

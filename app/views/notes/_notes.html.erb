@@ -1,0 +1,6 @@
+<% if @note_items.any? %>
+  <ol class="animals">
+    <%= render @note_items %>
+  </ol>
+  <%= will_paginate @note_items %>
+<% end %>
