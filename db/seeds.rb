@@ -27,8 +27,33 @@ animal_types_list=[
     'Water dragon',
     'Leopard gecko',
     'Bearded dragon',
-    'Snake',
-    'Anole'
+    'Corn snake',
+    'Anole',
+    'Eastern Collared Lizard',
+    'Galapagos Tortoise',
+    'Ground Skink',
+    'Yellow Bellied Slider',
+    'Fiddler Crab',
+    'Skink Lizard',
+    'Iguana',
+    'Mud-skipper',
+    'Chinese water dragon',
+    'Green iguana',
+    'Phelsuma Madagascariensis',
+    'Boa constrictor',
+    'Epicrates angulifer',
+    'Python',
+    'Cyclop yel',
+    'Arizona elegans',
+    'Boaedon fuliginosus',
+    'Elaphe bairdi',
+    'Elaphe carinata',
+    'Elaphe gutatta',
+    'Elaphe obsoleta',
+    'Elaphe pesrsica',
+    'Lampropeltis getulus'
+
+
 ]
 
 animal_types_list.each do |animal_type|
