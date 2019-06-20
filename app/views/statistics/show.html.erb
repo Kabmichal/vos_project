@@ -1,44 +1,50 @@
-Totaly was spend <%= @days %> pieces of food today
 <%= high_chart_globals(globals("#00ff0")) %>
 <%= high_chart("all_animal_food_chart", animal_calories)%>
-<% @animal_calories.each do |animal|%>
-  <%= animal["type"] %>
-  <%=animal["cround"]%>
-<% end %>
 
-<% @try.each do |animal|%>
-  <%= animal["type"] %>
-  <%=animal["mrd"]%>
-<% end %>
-
-<h3>new graph</h3>
-<%= high_chart_globals(globals("#25d12f")) %>
+<%= high_chart_globals(globals("#337ab7")) %>
 <%= high_chart("my_animal_foods", my_animal_foods)%>
 <%= high_chart_globals(globals("#00ff0")) %>
-<%= high_chart("just_try", just_try)%>
+<%= high_chart("number_of_food", number_of_food)%>
 
-<h3>Statistic of other users</h3>
-<table id="t01">
+<font color="#222"; size="8px"; style="padding-left: 370px">Animals of all users</font>
+
+<div class="shadow p-3 mb-5 bg-white rounded">
+  <table class="table table-bordered table-dark">
+  <thead>
   <tr>
-    <th class="center">Animal type</th>
-    <th class="center">Avarage number of calories</th>
+    <th scope="col" ;="" style="padding-left: 180px" bgcolor="#222"><font color="#eeeee"; size="4px">Animal type</font></th>
+    <th scope="col" ;="" style="padding-left: 240px" bgcolor="#222"><font color="#eeeee"; size="4px">Avarage number of calories</font></th>
   </tr>
-<% @animal_calories.each do |animal|%>
+  </thead>
+  <tbody>
+  <% @animal_calories.each do |animal|%>
     <tr>
       <td><%= animal["type"]%></td>
       <td class="center"><%=animal["cround"]%></td>
     </tr>
-<% end %>
+  <% end %>
+  </tbody>
 </table>
-<table id="t02">
-  <tr>
-    <th class="center">Animal type</th>
-    <th class="center">Avarage number of calories</th>
-  </tr>
-<% @my_animal_calories.each do |animal|%>
+</div>
+
+
+<font color="#222"; size="8px"; style="padding-left: 440px">My animals</font>
+
+<div class="shadow p-3 mb-5 bg-white rounded">
+  <table class="table table-bordered table-dark">
+    <thead>
     <tr>
-      <td><%= animal["type"]%></td>
-      <td class="center"><%=animal["output"]%></td>
+      <th scope="col" ;="" style="padding-left: 180px" bgcolor="#222"><font color="#eeeee"; size="4px">Animal type</font></th>
+      <th scope="col" ;="" style="padding-left: 240px" bgcolor="#222"><font color="#eeeee"; size="4px">Avarage number of calories</font></th>
     </tr>
-<% end %>
-</table>
+    </thead>
+    <tbody>
+    <% @my_animal_calories.each do |animal|%>
+      <tr>
+        <td><%= animal["type"]%></td>
+        <td class="center"><%=animal["output"]%></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

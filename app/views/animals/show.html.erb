@@ -9,10 +9,12 @@
       <% if @food_count.nil? %>
         </aside>
         </div>
-        <h1>Create food!</h1>
+        <h1>Create food! You can do it <%= link_to "here", root_path, style: 'color:#0975b7' %> </h1>
   <section class="animal_foods">
   <%else %>
-      <%= render 'animals/animal_food_form' %>
+        <div class="well controls">
+        <%= render 'animals/animal_food_form' %>
+        </div>
       <%end %>
     </section>
     <% end %>

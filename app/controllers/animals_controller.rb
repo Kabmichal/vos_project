@@ -5,8 +5,8 @@ class AnimalsController < ApplicationController
 
   def index
     if params[:search]
-      @animals= Animal.joins(:animal_type).where("animals.name like ? or animal_types.animal_type like ?", "%#{params[:search]}%","%#{params[:search]}%").paginate(page: params[:page],per_page: 8)
-
+      #@animals= Animal.joins(:animal_type).where("animals.name like ? or animal_types.animal_type like ?", "%#{params[:search]}%","%#{params[:search]}%").paginate(page: params[:page],per_page: 8)
+      @animals=Animal.joins(:animal_type).where("lower(unaccent(animals.name)) LIKE lower(unaccent(?)) or lower(unaccent(animal_types.animal_type)) LIKE lower(unaccent(?))","%#{params[:search]}%", "%#{params[:search]}%").paginate(page: params[:page],per_page: 8)
     else
       @animals= Animal.all.order('created_at DESC').paginate(page: params[:page],per_page: 8)
     end

@@ -22,7 +22,8 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.build(animal_params)
     if @note.save
-      redirect_to notes_path, notice: "Note created"
+      flash[:success] = "Note created"
+      redirect_to notes_path
     else
       render :new
     end

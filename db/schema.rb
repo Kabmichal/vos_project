@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_131828) do
+ActiveRecord::Schema.define(version: 2019_06_18_192440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "animal_foods", force: :cascade do |t|
     t.integer "count"

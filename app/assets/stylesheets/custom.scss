@@ -27,6 +27,13 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
+h11{
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #55aad5;
+}
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -60,7 +67,7 @@ p {
   float: left;
   margin-right: 210px;
   font-size: 2.7em;
-  color: #25d12f;
+  color: #eeeeee;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -255,17 +262,7 @@ span.picture {
 }
 /* tables */
 
-table, th, td {
-  border: 1px solid black;
-}
-table#t01 tr:nth-child(even) {
-  background-color: #eee;
-}
-table {
-  width: 40%;
-  margin-left: 350px;
 
-}
 
 th {
   height: 50px;

@@ -6,10 +6,16 @@
           <%= render 'users/user_info' %>
         </section>
         <section class="animals_form">
+          <div class="well controls">
+          <h2><font color="black" >Create animal</font></h2>
           <%= render 'animals/animal_form' %>
+          </div>
         </section>
         <section class="animal_foods">
+          <div class="well controls">
+          <h2><font color="black" >Create food</font></h2>
           <%= render 'foods/food_form' %>
+          </div>
         </section>
       </aside>
       <div class="col-md-8">
@@ -22,11 +28,51 @@
 <div class="center jumbotron">
   <h1>Welcome to the Pet diary App</h1>
 
-  <h2>
-    This is the home page for the
-    Pet diary application.
-  </h2>
-
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://scontent.fbts2-1.fna.fbcdn.net/v/t1.15752-9/64566780_1026316180911832_8242117119483838464_n.png?_nc_cat=105&_nc_oc=AQkgzwYgRuPOjnLmeUPAvJPwMow9D60TKt7CtiYoGo2PFzVshuIfMVNpxtFlPhBLo6U&_nc_ht=scontent.fbts2-1.fna&oh=91272ed9475435e8380744869d15ed84&oe=5D79CC46" alt="Chania">
+        <div class="carousel-caption">
+          <font color="black"> <h3>Statistics</h3></font>
+          <font color="black"> <p>Real time statistics about animals</p></font>
+        </div>
+      </div>
+
+      <div class="item", style="margin: auto">
+        <img src="https://scontent.fbts2-1.fna.fbcdn.net/v/t1.15752-9/65072076_2465666033486189_3545492517845729280_n.png?_nc_cat=104&_nc_oc=AQlio2EG35_cmF_hxCzqoJPk8J_fslBEHVf3P_jC-sZoUOwQZzDvrUsMx7UD4Ekzhzc&_nc_ht=scontent.fbts2-1.fna&oh=6526f7629f2f78fdbff0b3c1735afcd6&oe=5DC21F90" alt="Chicago", style="margin: auto">
+        <div class="carousel-caption">
+          <font color="black"><h3>Food notes</h3></font>
+          <font color="black"> <p>Notes about time and number of calories</p></font>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://scontent.fbts2-1.fna.fbcdn.net/v/t1.15752-9/64742501_473763789863198_8513327283270844416_n.png?_nc_cat=102&_nc_oc=AQlt0LOKUzRQGe7cp_HGzhXPAXohtBQt0mGjDe4It3-n_hJz0VPR0ufKCa_XwlgizYE&_nc_ht=scontent.fbts2-1.fna&oh=ee3337dead6cb77fd1cf231245241919&oe=5D942876" alt="New York">
+        <div class="carousel-caption">
+          <font color="black"><h3>Calendar</h3></font>
+          <font color="black"><p>Calendar for important situations</p></font>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 <% end %>

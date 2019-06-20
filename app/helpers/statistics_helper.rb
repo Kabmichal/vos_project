@@ -1,13 +1,12 @@
 module StatisticsHelper
   def animal_calories
     @all_animal_food_chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: "Animal food2  graph")
+      f.title(text: "All animals calories graph")
       f.xAxis(name: "Time", categories: @animal_calories.map{|s| s["type"]})
-      f.series(name: "Number of all users ", yAxis: 0, data: @animal_calories.map{|s| s["cround"].to_i})
-      f.series(name: "My animals", yAxis: 0, data:@my_animal_calories.map{|s| s["output"].to_i})
+      f.series(name: "Avarage of all animals ", yAxis: 0, data: @animal_calories.map{|s| s["cround"].to_i})
       f.legend(align: 'right', verticalAlign: 'top', y: 175, x: -15, layout: 'vertical')
       f.yAxis [
-                  {title: {text: "NUmber of calories", margin: 30} }
+                  {title: {text: "Number of calories", margin: 30} }
               ]
       f.chart({defaultSeriesType: "column"})
     end
@@ -29,12 +28,24 @@ module StatisticsHelper
   end
   def my_animal_foods
     @my_animal_foods = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: "Animal  calories graph")
+      f.title(text: "My animals calories graph")
       f.xAxis(name: "Time", categories: @my_animal_calories.map{|s| s["type"]})
-      f.series(name: "Number of calories", yAxis: 0, data:@my_animal_calories.map{|s| s["output"].to_i})
+      f.series(name: "Avarage of my animals", yAxis: 0, data:@my_animal_calories.map{|s| s["output"].to_i})
       f.legend(align: 'right', verticalAlign: 'top', y: 175, x: -15, layout: 'vertical')
       f.yAxis [
-                  {title: {text: "NUmber of calories", margin: 30} }
+                  {title: {text: "Number of calories", margin: 30} }
+              ]
+      f.chart({defaultSeriesType: "column"})
+    end
+  end
+  def number_of_food
+    @number_of_foods_day = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: "Food counter")
+      f.xAxis(name: "Time", categories: @number_of_foods_day.map{|s| s["date"]})
+      f.series(name: "Number of food", yAxis: 0, data:@number_of_foods_day.map{|s| s["sum"].to_i})
+      f.legend(align: 'right', verticalAlign: 'top', y: 175, x: -15, layout: 'vertical')
+      f.yAxis [
+                  {title: {text: "Number of food", margin: 30} }
               ]
       f.chart({defaultSeriesType: "column"})
     end
