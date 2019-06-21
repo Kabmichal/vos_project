@@ -10,4 +10,3 @@ $(document).on 'turbolinks:load', ->
   #  dateFormat: 'yy-mm-dd'
 jQuery ->
  $('#animal_food_time').timepicker()
-
