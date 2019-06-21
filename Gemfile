@@ -8,6 +8,7 @@ ruby '2.6.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-timepicker-rails'
+gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'bcrypt',         '3.1.12'
