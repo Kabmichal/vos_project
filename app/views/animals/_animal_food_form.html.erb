@@ -6,7 +6,7 @@
       <%= f.label :time %>
       <%= f.time_select(:time)%>
       <%= f.label :current_date, "Date:" %>
-      <%= f.date_select :current_date, :class => "datepicker" %>
+      <%= f.date_field :current_date, as: :date, value: f.object.try(:strftime,"%Y-%m-%d") %>
       <%= f.label :food_type %>
       <%= f.collection_select :food_id, @current_user.foods.order(:name),:id,:name, include_blank: false %>
   </div>

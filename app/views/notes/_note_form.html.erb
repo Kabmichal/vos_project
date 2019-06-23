@@ -2,6 +2,7 @@
   <%= f.label :note, 'Note' %>
   <%= f.text_field :note, class: 'form-control' %>
   <%= f.label :date, "Date:" %>
-  <%= f.date_select :date, :class => "datepicker" %>
+  <%#= f.text_field :date, :class => "datepicker" %>
+  <%= f.date_field :date, as: :date, value: f.object.try(:strftime,"%Y-%m-%d") %>
   <%= f.submit "Create note", class: "btn btn-primary" %>
 <%end %>
